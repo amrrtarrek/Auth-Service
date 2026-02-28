@@ -18,11 +18,17 @@ function login(username, password) {
 
   const user = findUser(username);
 
-  if (!user) {
+if (!user) {
+    const timestamp = new Date().toISOString();
+    console.log(`[${timestamp}] Failed login attempt: Username '${username}' not found.`);
+    
     return { success: false, message: "Invalid credentials" };
   }
 
-  if (user.password !== password) {
+if (user.password !== password) {
+    const timestamp = new Date().toISOString();
+    console.log(`[${timestamp}] Failed login attempt: Invalid password provided for username '${username}'.`);
+    
     return { success: false, message: "Invalid credentials" };
   }
 
